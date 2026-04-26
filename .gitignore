@@ -1,0 +1,9 @@
+# Nix build outputs
+result
+result-*
+nixos/result
+nixos/result-*
+
+# direnv
+.direnv/
+.envrc.local

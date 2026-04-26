@@ -1,6 +1,10 @@
 # ASUS ZenBook A14 (Snapdragon X Plus)
 
-This device runs a Snapdragon ARM chip (`x1p42100`) with limited Linux support. The fixes below are required after a fresh Ubuntu install.
+This device runs a Snapdragon ARM chip (`x1p42100`) with limited Linux support. The fixes below are required after a fresh **Ubuntu 26.04** install and have been verified on kernel **`7.0.0-32-qcom-x1e`** (Ubuntu Concept X1E PPA).
+
+> Mainline Linux 7.0 was released on 2026-04-12 and includes Adreno X1-45 GPU support and the `x1p42100-asus-zenbook-a14` device tree (merged via the 6.18 cycle). The PPA kernel above adds further Qualcomm patches on top.
+
+For a minimal NixOS boot-test ISO (kernel 7.0, server/minimal, no firmware bundled), see [`nixos/`](./nixos/).
 
 ## Internet (First Boot)
 
@@ -19,7 +23,7 @@ sudo qcom-firmware-extract
 
 ## Power & GPU (Resolved)
 
-The default Ubuntu kernel (6.17 generic) has no GPU acceleration or CPU frequency scaling for X1P42100, resulting in ~10W idle power draw with software rendering. The fix is the X1E PPA kernel:
+The default Ubuntu 26.04 kernel (6.17 generic) has no GPU acceleration or CPU frequency scaling for X1P42100, resulting in ~10W idle power draw with software rendering. The fix is the X1E PPA kernel:
 
 ```bash
 sudo add-apt-repository -y ppa:ubuntu-concept/x1e
